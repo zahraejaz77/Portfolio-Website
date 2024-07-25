@@ -14,7 +14,7 @@ error_reporting(E_ALL);
  * 
  * FIXME: Update this to your desired email address.
  */
-$recipient = "support@themejunction.net";
+$recipient = "zahraejaz77@gmail.com";
 
 // Set the email subject.
 $sender = $conName . " { " . $conEmail . " }";
