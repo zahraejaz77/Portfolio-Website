@@ -1390,7 +1390,7 @@ Adobe Photoshop, Adobe Illustrator
                      </div>
 
                      <div class="tj-contact-form">
-                        <form id="contact-form" action="send_email.php" method="POST">
+                        <form id="contact-form" onsubmit="sendEmail(event)" method="POST">
                            <div class="row gx-3">
                               <div class="col-sm-6">
                                  <div class="form_group">
@@ -1420,7 +1420,7 @@ Adobe Photoshop, Adobe Illustrator
                                  <div class="form_group">
                                     <select name="conService" id="conService" class="tj-nice-select">
                                        <option value="" selected disabled>Choose Service</option>
-                                       <option value="braning">Branding Design</option>
+                                       <option value="branding">Branding Design</option>
                                        <option value="web">Web Design</option>
                                        <option value="uxui">UI/UX Design</option>
                                        <option value="app">App Design</option>
@@ -1535,7 +1535,30 @@ Adobe Photoshop, Adobe Illustrator
       </div>
    </footer>
    <!-- FOOTER AREA END -->
-
+   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+   <script type="text/javascript">
+      (function() {
+         emailjs.init("gYMgXcc09Gk1Gv_nq");
+      })();
+   </script>
+   <script type="text/javascript">
+      const sendEmail = (e) => {
+         e.preventDefault();
+         
+         emailjs.sendForm("service_y1009ic", "template_x2o0d7a", document.getElementById("contact-form"))
+            .then(
+               () => {
+                  console.log("SUCCESS!");
+                  alert("Message sent successfully!");
+               },
+               (error) => {
+                  console.log("FAILED...", error.text);
+                  alert("Failed to send message. Please try again.");
+               }
+            );
+         document.getElementById("contact-form").reset();
+      };
+   </script>
    <!-- CSS here -->
    <script src="assets/js/jquery.min.js"></script>
    <script src="assets/js/bootstrap.bundle.min.js"></script>
